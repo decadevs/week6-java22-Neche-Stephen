@@ -10,5 +10,7 @@ public interface LibraryService {
 
     void addBookToLibrary(Library library, Book book);
     void lendBook(Book book, Queue<Person> borrowers );
+    void lendBookNew(Book book, Queue<Person> borrowers );
+
 
 }

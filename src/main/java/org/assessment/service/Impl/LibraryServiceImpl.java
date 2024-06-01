@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LibraryServiceImpl implements LibraryService {
 
@@ -69,4 +70,31 @@ public class LibraryServiceImpl implements LibraryService {
     }
 
 
+
+
+    @Override
+    public void lendBookNew(Book book, Queue<Person> borrowers) {
+        int copies = book.getCopy(); // Get copies of books available
+        int numOfBorrowers = borrowers.size();
+
+        if (copies <= 0) {
+            System.out.println("Book Taken");
+            return;
+        }
+
+        int copiesGiven = Math.min(copies, numOfBorrowers);
+
+        IntStream.range(0, copiesGiven)
+                .mapToObj(i -> borrowers.poll())
+                .forEach(person -> {
+                    List<Book> booksBorrowed = person.getBooksBorrowed();
+                    booksBorrowed.add(book);
+                    System.out.println("Book lent to " + person.getRole() + " - " + person.getName());
+                });
+
+        borrowers.forEach(person -> System.out.println("Sorry " + person.getName() + " - " + person.getRole() + ", Book Taken"));
+
+        book.setCopy(copies - copiesGiven);
+        System.out.println("Copies of " + book.getTitle() + " remaining is : " + book.getCopy());
+    }
 }

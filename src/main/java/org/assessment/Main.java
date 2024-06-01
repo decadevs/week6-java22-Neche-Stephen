@@ -37,8 +37,8 @@ public class Main {
         Person juniorStudent2 = new Person("Bright", JUNIOR_STUDENT_PRIORITY, Role.JUNIOR_STUDENT);
 
         // Create book objects
-        Book yellow_sun = new Book("Half of a yellow sun", 5);
-        Book things_fall_apart = new Book("Things fall apart", 10);
+        Book yellow_sun = new Book("Half of a yellow sun", 2);
+        Book things_fall_apart = new Book("Things fall apart", 1);
 
         // Create Library Object
         Library library = new Library();
@@ -70,12 +70,12 @@ public class Main {
         personService.studentRequest(seniorStudent1, "Half of a yellow sun", library,  yellow_sun_borrowers, System.currentTimeMillis());
         personService.teacherRequest(teacher, "Half of a yellow sun", library,  yellow_sun_borrowers, System.currentTimeMillis());
         // Add more students to the queue
-       personService.studentRequest(juniorStudent2, "Half of a yellow sun", library,  yellow_sun_borrowers, System.currentTimeMillis());
-       personService.studentRequest(seniorStudent2, "Half of a yellow sun", library,  yellow_sun_borrowers, System.currentTimeMillis());
+       // personService.studentRequest(juniorStudent2, "Half of a yellow sun", library,  yellow_sun_borrowers, System.currentTimeMillis());
+       // personService.studentRequest(seniorStudent2, "Half of a yellow sun", library,  yellow_sun_borrowers, System.currentTimeMillis());
         System.out.println(); // Create new line for console
 
         // Implement Borrow book by the library
-        libraryService.lendBook(yellow_sun, yellow_sun_borrowers);
+        libraryService.lendBookNew(yellow_sun, yellow_sun_borrowers);
         System.out.println("***********************");
         System.out.println();// Create new line for console
 
@@ -94,7 +94,7 @@ public class Main {
         System.out.println();
 
        // Implement Borrow book by the library
-        libraryService.lendBook(things_fall_apart, thing_fall_apart_borrowers);
+        libraryService.lendBookNew(things_fall_apart, thing_fall_apart_borrowers);
 
 
 
